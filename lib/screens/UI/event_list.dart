@@ -49,7 +49,11 @@ class _EventListState extends State<EventList> {
             if( snapshot.data == null ){
               return Container(
                 child:Center(
-                  child: Text("loading...")
+                  child: CircularProgressIndicator(
+                    backgroundColor: Colors.grey,
+                    strokeWidth: 4,
+
+                  )
                 )
               );
             } else {

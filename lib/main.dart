@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'package:tpc_mac/screens/event_list.dart';
-import 'package:tpc_mac/screens/home.dart';
+
+import 'package:tpc_mac/screens/UI/home.dart';
 
 void main() => runApp(new MyApp());
 
@@ -18,10 +19,13 @@ class MyApp extends StatelessWidget {
 
 class LoginPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _LoginPageState createState() => _LoginPageState(); 
+   
 }
 
 class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMixin {
+  
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
   
   AnimationController _iconAnimationController;
   Animation<double> _iconAnimation;
@@ -35,10 +39,15 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
     _iconAnimation.addListener(()=> this.setState((){}));
     _iconAnimationController.forward();
   }
+  bool loginAuth(){
+    
+    return true;
+  }
   
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      key: _scaffoldKey,
       backgroundColor: Colors.greenAccent,
       body: new Stack(
         fit: StackFit.expand,
@@ -92,9 +101,19 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                           textColor: Colors.white,
                           child: new Text("Login"),
                           onPressed: () => {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) {
+                            if(loginAuth()== true){
+                              Navigator.push(context, MaterialPageRoute(builder: (context) {
                               return HomePage();
                             }))
+                            }else{
+                              _scaffoldKey.currentState.showSnackBar(
+                                SnackBar(
+                                  content: Text("Unable to login"),
+                                  duration: Duration(seconds:3),
+                                  backgroundColor: Colors.black12,
+                                )
+                              )
+                            }
                           },
                           splashColor: Colors.black12,
                           ),

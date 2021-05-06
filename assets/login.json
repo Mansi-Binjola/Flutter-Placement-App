@@ -1,0 +1,13 @@
+{
+    "data": {
+        "user": {
+            "email": "admin@gmail.com",
+            "fullname": "Molly Cooper"
+        }
+    },
+    "status": {
+        "message": "You logged in",
+        "type": "success"
+    },
+    "token": "59796ee5-121c-40a2-a60d-1eb4f86ac9e5"
+}
