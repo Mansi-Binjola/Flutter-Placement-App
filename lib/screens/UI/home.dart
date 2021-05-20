@@ -7,13 +7,16 @@ import 'package:tpc_mac/main.dart';
 import 'package:tpc_mac/screens/UI/ProfilePage.dart';
 
 class HomePage extends StatelessWidget {
+  
   @override
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("HomePage"),
+      
       ),
-      body: SingleChildScrollView(
-        child: Stack(
+      resizeToAvoidBottomInset : false,
+      body:ListView(
           children: [
             SizedBox(
               height:300.0,
@@ -83,7 +86,6 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-            
             Container(
               padding: EdgeInsets.all(8.0),
               height: 250.0,
@@ -109,7 +111,11 @@ class HomePage extends StatelessWidget {
                 },
               ),
             ), 
-            ListView.builder(
+            Divider(
+              height:1,
+              thickness:3,
+            )
+           /* ListView.builder(
               itemCount: 8,
               itemBuilder: (BuildContext context, int index){// code for how our event list will look like
                 return Card(
@@ -125,7 +131,7 @@ class HomePage extends StatelessWidget {
             Divider(
               height:1, 
               thickness: 2,
-            ),            
+            ), this is the end*/           
                 /* Container(
                   width: 160.0,
                   color: Colors.red,
@@ -145,8 +151,8 @@ class HomePage extends StatelessWidget {
                 Container(
                   width: 160.0,
                   color: Colors.orange,
-                ), */
-            
+                ), 
+            */
             /* ListView.builder(
               itemCount: 3,
               itemBuilder: (BuildContext context, int index){// code for how our event list will look like
@@ -191,162 +197,164 @@ class HomePage extends StatelessWidget {
             */
           ], 
         ),
-      ),
-        drawer: Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              
-              //margin: EdgeInsets.only(top: 0.3),
-              //padding: EdgeInsets.all(14),
-              child: Row(
-                children:[
-                  Column(
-                    children: [
-                      GestureDetector(
-                        child: CircleAvatar(child: Icon(Icons.person,size: 40,)),
-                        onTap: () {
-                          // Update the state of the app
-                          // ...
-                          // Then close the drawer
-                          Navigator.push(context, MaterialPageRoute(builder:(context){
-                            return ProfilePage();
-                          }),);
-                        },
-                      ),
+        drawer: Container(
+          width: MediaQuery. of(context). size. width*0.75,
+          child: Drawer(
+          // Add a ListView to the drawer. This ensures the user can scroll
+          // through the options in the drawer if there isn't enough vertical
+          // space to fit everything.
+          child: ListView(
+            // Important: Remove any padding from the ListView.
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              DrawerHeader(
+                
+                //margin: EdgeInsets.only(top: 0.3),
+                //padding: EdgeInsets.all(14),
+                child: Row(
+                  children:[
+                    Column(
+                      children: [
+                        GestureDetector(
+                          child: CircleAvatar(child: Icon(Icons.person,size: 40,)),
+                          onTap: () {
+                            // Update the state of the app
+                            // ...
+                            // Then close the drawer
+                            Navigator.push(context, MaterialPageRoute(builder:(context){
+                              return ProfilePage();
+                            }),);
+                          },
+                        ),
+                      ],
+                    )
+                  ]
+                ),
+                
+              ),
+              ListTile(
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children:[
+                    Icon(Icons.home,size: 30,),
+                    Padding(padding: EdgeInsets.only(left:20,)),
+                    Text('Home', style:TextStyle(fontSize: 25,),),
                     ],
-                  )
-                ]
+                ),
+                onTap: () {
+                  // Update the state of the app
+                  // ...
+                  // Then close the drawer
+                  Navigator.push(context, MaterialPageRoute(builder:(context){
+                    return HomePage();
+                  }),);
+                },
+              ),
+
+              ListTile(
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children:[
+                    Icon(Icons.event_available,size: 30,),
+                    Padding(padding: EdgeInsets.only(left:20,)),
+                    Text('Events/Worshop', style:TextStyle(fontSize: 22,),),
+                  ],
+                ),
+                onTap: () {
+                  // Update the state of the app
+                  // ...
+                  // Then close the drawer
+                  Navigator.push(context, MaterialPageRoute(builder:(context){
+                    return EventList();
+                  }),);
+                },
+              ),
+
+              ListTile(
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children:[
+                    Icon(Icons.assignment_ind,size: 30,),
+                    Padding(padding: EdgeInsets.only(left:20,)),
+                    Text('Internship', style:TextStyle(fontSize: 25,),),
+                    ],
+                ),
+                onTap: () {
+                  // Update the state of the app
+                  // ...
+                  // Then close the drawer
+                  Navigator.push(context, MaterialPageRoute(builder:(context){
+                    return EventList();
+                  }),);
+                },
+              ),
+
+              ListTile(
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children:[
+                    Icon(Icons.work,size: 30,),
+                    Padding(padding: EdgeInsets.only(left:20,)),
+                    Text('Placement', style:TextStyle(fontSize: 25,),),
+                    ],
+                ),
+                onTap: () {
+                  // Update the state of the app
+                  // ...
+                  // Then close the drawer
+                  Navigator.push(context, MaterialPageRoute(builder:(context){
+                    return EventList();
+                  }),);
+                },
               ),
               
-            ),
-            ListTile(
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children:[
-                  Icon(Icons.home,size: 30,),
-                  Padding(padding: EdgeInsets.only(left:20,)),
-                  Text('Home', style:TextStyle(fontSize: 25,),),
-                  ],
+              ListTile(
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children:[
+                    Icon(Icons.settings,size: 30,),
+                    Padding(padding: EdgeInsets.only(left:20,)),
+                    Text('Settings', style:TextStyle(fontSize: 25,),),
+                    ],
+                ),
+                onTap: () {
+                  // Update the state of the app
+                  // ...
+                  // Then close the drawer
+                  Navigator.push(context, MaterialPageRoute(builder:(context){
+                    return EventList();
+                  }),);
+                },
               ),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.push(context, MaterialPageRoute(builder:(context){
-                  return EventList();
-                }),);
-              },
-            ),
+              ListTile(
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children:[
+                    Icon(Icons.logout,size: 30,color: Colors.redAccent,),
+                    Padding(padding: EdgeInsets.only(left:20,)),
+                    Text('Logout', style:TextStyle(fontSize: 25,),),
+                    ],
+                ),
+                onTap: () {
+                  // Update the state of the app
+                  // ...
+                  // Then close the drawer
+                  Navigator.push(context, MaterialPageRoute(builder:(context){
+                    return LoginPage();
+                  }),);
+                },
+              ),
 
-            ListTile(
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children:[
-                  Icon(Icons.event_available,size: 30,),
-                  Padding(padding: EdgeInsets.only(left:20,)),
-                  Text('Events/Worshop', style:TextStyle(fontSize: 25,),),
-                  ],
-              ),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.push(context, MaterialPageRoute(builder:(context){
-                  return EventList();
-                }),);
-              },
-            ),
-
-            ListTile(
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children:[
-                  Icon(Icons.assignment_ind,size: 30,),
-                  Padding(padding: EdgeInsets.only(left:20,)),
-                  Text('Internship', style:TextStyle(fontSize: 25,),),
-                  ],
-              ),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.push(context, MaterialPageRoute(builder:(context){
-                  return EventList();
-                }),);
-              },
-            ),
-
-            ListTile(
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children:[
-                  Icon(Icons.work,size: 30,),
-                  Padding(padding: EdgeInsets.only(left:20,)),
-                  Text('Placement', style:TextStyle(fontSize: 25,),),
-                  ],
-              ),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.push(context, MaterialPageRoute(builder:(context){
-                  return EventList();
-                }),);
-              },
-            ),
-            
-            ListTile(
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children:[
-                  Icon(Icons.settings,size: 30,),
-                  Padding(padding: EdgeInsets.only(left:20,)),
-                  Text('Settings', style:TextStyle(fontSize: 25,),),
-                  ],
-              ),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.push(context, MaterialPageRoute(builder:(context){
-                  return EventList();
-                }),);
-              },
-            ),
-            ListTile(
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children:[
-                  Icon(Icons.logout,size: 30,color: Colors.redAccent,),
-                  Padding(padding: EdgeInsets.only(left:20,)),
-                  Text('Logout', style:TextStyle(fontSize: 25,),),
-                  ],
-              ),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.push(context, MaterialPageRoute(builder:(context){
-                  return LoginPage();
-                }),);
-              },
-            ),
-
-          ],
-        ),
+            ],
+          ),
       ),
+        ),
       
     );
   }

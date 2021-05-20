@@ -48,6 +48,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
   Widget build(BuildContext context) {
     return new Scaffold(
       key: _scaffoldKey,
+      resizeToAvoidBottomPadding: false,//removes bottom render error, but doesn't allow to scroll, TO BE CHECKED AGAIN
       backgroundColor: Colors.greenAccent,
       body: new Stack(
         fit: StackFit.expand,
