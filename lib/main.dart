@@ -48,7 +48,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
   Widget build(BuildContext context) {
     return new Scaffold(
       key: _scaffoldKey,
-      resizeToAvoidBottomPadding: false,//removes bottom render error, but doesn't allow to scroll, TO BE CHECKED AGAIN
+      resizeToAvoidBottomInset: false,//removes bottom render error, but doesn't allow to scroll, TO BE CHECKED AGAIN
       backgroundColor: Colors.greenAccent,
       body: new Stack(
         fit: StackFit.expand,
@@ -107,13 +107,11 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                               return HomePage();
                             }))
                             }else{
-                              _scaffoldKey.currentState.showSnackBar(
                                 SnackBar(
                                   content: Text("Unable to login"),
                                   duration: Duration(seconds:3),
                                   backgroundColor: Colors.black12,
                                 )
-                              )
                             }
                           },
                           splashColor: Colors.black12,

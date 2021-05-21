@@ -268,18 +268,21 @@ class MapScreenState extends State<ProfilePage>
             child: Padding(
               padding: EdgeInsets.only(right: 10.0),
               child: Container(
-                  child: new RaisedButton(
+                  child: new ElevatedButton(
                 child: new Text("Save"),
-                textColor: Colors.white,
-                color: Colors.green,
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.white,
+                  onPrimary: Colors.green,
+                ) ,
+                
                 onPressed: () {
                   setState(() {
                     _status = true;
                     FocusScope.of(context).requestFocus(new FocusNode());
                   });
                 },
-                shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(20.0)),
+               /* shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(20.0)),*/
               )),
             ),
             flex: 2,
@@ -288,18 +291,20 @@ class MapScreenState extends State<ProfilePage>
             child: Padding(
               padding: EdgeInsets.only(left: 10.0),
               child: Container(
-                  child: new RaisedButton(
+                  child: new ElevatedButton(
                 child: new Text("Cancel"),
-                textColor: Colors.white,
-                color: Colors.red,
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.white,
+                  onPrimary: Colors.red
+                ) ,
                 onPressed: () {
                   setState(() {
                     _status = true;
                     FocusScope.of(context).requestFocus(new FocusNode());
                   });
                 },
-                shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(20.0)),
+                /*shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(20.0)),*/
               )),
             ),
             flex: 2,
