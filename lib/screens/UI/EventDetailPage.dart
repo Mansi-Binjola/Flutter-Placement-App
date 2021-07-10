@@ -11,7 +11,7 @@ class EventDetailPage extends StatelessWidget {
     return  Stack(
     children: <Widget>[
       AppBar(
-        title: Text("EventName"),
+        title: Text(event.eventName),
         
       ),
       Positioned(
@@ -22,8 +22,7 @@ class EventDetailPage extends StatelessWidget {
         child: Container(
           //color: Color.fromARGB(100, 100, 100, 100),
           child: Image.asset(
-            "assets/poster.jpeg",
-            //event.eventPoster,
+            "assets/images/"+event.eventPoster,
             fit: BoxFit.fill,
           ),
         ),
@@ -46,6 +45,7 @@ class EventDetailPage extends StatelessWidget {
               /*theme: ThemeData(
                 canvasColor: Colors.transparent,
               ),*/
+              color: Colors.white,
               home:ListView.builder(
                 
               controller: scrollController,

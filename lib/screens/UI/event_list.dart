@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 //import 'package:backdrop/backdrop.dart';
 import 'dart:async'; 
-import 'package:http/http.dart' as http; //for http request from server
+//import 'package:http/http.dart' as http; //for http request from server
 import 'dart:convert'; // to deserialize json data
 import 'package:tpc_mac/screens/data/EventClass.dart';
 import 'package:tpc_mac/screens/UI/EventDetailPage.dart';
@@ -19,9 +20,11 @@ class EventList extends StatefulWidget {
 class _EventListState extends State<EventList> {
   Future<List<Event>> _getEvents() async {// since it is a asynchronus function we use keyword async
 
-    var data = await http.get("http://www.json-generator.com/api/json/get/cpsYZzlKyG?indent=2");//http://www.json-generator.com/api/json/get/cgiboTmTdu?indent=2");//await is used here for waiting for data to generate
+    //var data = await http.get("http://www.json-generator.com/api/json/get/cpsYZzlKyG?indent=2");//http://www.json-generator.com/api/json/get/cgiboTmTdu?indent=2");//await is used here for waiting for data to generate
+    var data = await rootBundle.loadString('assets/appData.json');
     
-    var jsonData = json.decode(data.body);
+    var jsonData = await json.decode(data);
+    //var jsonData = json.decode(data.body);
 
     List<Event> events = [];
 
@@ -67,7 +70,7 @@ class _EventListState extends State<EventList> {
                         width: 60.0,
                         //color: Colors.grey,
                         //borderRadius: BorderRadius.all(Radius.circular(10.0)),//add border radius here
-                        child: Image.asset("assets/poster.jpeg",fit: BoxFit.fill,),//Icon(Icons.person,color: Colors.white, size: 50.0),//Image.asset(snapshot.data[index].eventPoster),//add image location here
+                        child: Image.asset("assets/images/"+snapshot.data[index].eventPoster,fit: BoxFit.fill,),//Icon(Icons.person,color: Colors.white, size: 50.0),//Image.asset(snapshot.data[index].eventPoster),//add image location here
                         //child: NetworkImage(
                         // snapshot.data[index].eventPoster
                         // ),

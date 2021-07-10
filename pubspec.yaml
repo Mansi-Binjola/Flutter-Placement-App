@@ -56,8 +56,9 @@ flutter:
   - assets/Front.png
   - assets/Anveshana.jpg
   - assets/poster.jpeg
-  - assets/login.json
-  
+  - assets/images/.
+  - assets/appData.json
+  - assets/mac_logo.jpg
   # - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

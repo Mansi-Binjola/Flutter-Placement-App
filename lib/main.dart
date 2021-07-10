@@ -49,29 +49,47 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
     return new Scaffold(
       key: _scaffoldKey,
       resizeToAvoidBottomInset: false,//removes bottom render error, but doesn't allow to scroll, TO BE CHECKED AGAIN
-      backgroundColor: Colors.greenAccent,
+      backgroundColor: Colors.white,
       body: new Stack(
         fit: StackFit.expand,
         children: <Widget>[
           new Image(
-            image: new AssetImage("assets/MAC.jpg"),
-            fit: BoxFit.cover,
-            color: Colors.black54,
-            colorBlendMode: BlendMode.darken,
+            image: new AssetImage("assets/images/app Front.png"),
+            fit: BoxFit.fill,
           ),
           new Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              new FlutterLogo(// TPC LOGO to be added
-                size: _iconAnimation.value * 100,
+              Container(
+                width: _iconAnimation.value * 80,
+                height: _iconAnimation.value * 80,
+                decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: AssetImage("assets/mac_logo.jpg"),
+                  fit: BoxFit.fill
+                ),
+                ),
+              ),/*
+              new Image.asset(// TPC LOGO to be added
+                "assets/mac_logo.jpg",
+                shape:BoxShape.circle,
+                height: _iconAnimation.value * 100,
+                width: _iconAnimation.value * 100,
+                
+              ),*/
+              Padding(padding: EdgeInsets.all(8.0)),
+              new Text("Training and Placement Cell", 
+              style: TextStyle(fontSize:_iconAnimation.value * 25,
+),
               ),
               new Form(
                 child: new Theme(
                   data: new ThemeData(
-                    brightness: Brightness.dark, primarySwatch: Colors.teal,
+                    brightness: Brightness.light,
                     inputDecorationTheme: new InputDecorationTheme(
                       labelStyle: new TextStyle(
-                        color: Colors.teal, fontSize: 20.0
+                        color: Colors.black87, fontSize: 20.0
                       )
                     ) ),
                   
@@ -96,9 +114,9 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                         ),
                         new Padding(padding: const EdgeInsets.only(top: 40.0)),
                         new MaterialButton(
-                          height: 40.0,
-                          minWidth: 60.0,
-                          color: Colors.teal,
+                          height: 50.0,
+                          minWidth: 70.0,
+                          color: Colors.black87,
                           textColor: Colors.white,
                           child: new Text("Login"),
                           onPressed: () => {
